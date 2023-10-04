@@ -1,0 +1,37 @@
+/* Nav bar */
+.navbar{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: rgba(122, 122, 122, 1);
+  padding: 5px;
+  column-gap: 50px;
+}
+
+.cqulogo, .navlinks, .profile {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+
+
+.cqulogo {
+  text-align: left;
+}
+
+.navlinks {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  background-color: lightblue;
+	
+  /*position:relative;
+  bottom: -15px;*/
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+	}
+
+.profile {
+  /*position:relative;
+  bottom: 15px;*/
+  line-height: 50px;
+  text-align: right;
+}

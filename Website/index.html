@@ -26,29 +26,29 @@
   <div class="searchtags">
     <form>
 		<a>Listing type</a><br>
-        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" checked>
+        <input type="checkbox" id="lookingforitem" name="vehicle1" value="Bike" checked>
         <label for="vehicle1"> Looking for item</label><br>
-        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" checked>
+        <input type="checkbox" id="tradingitem" name="vehicle2" value="Car" checked>
         <label for="vehicle2"> Trading item</label><br><br>
 		<a>Item type</a><br>
-        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" checked>
+        <input type="checkbox" id="books" checked>
         <label for="vehicle3"> Books</label><br>
-	    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" checked>
+	    <input type="checkbox" id="devices" checked>
         <label for="vehicle1"> Electronic devices</label><br>
-        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" checked>
+        <input type="checkbox" id="clothes" checked>
         <label for="vehicle2"> Clothes</label><br>
-        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" checked>
+        <input type="checkbox" id="other" checked>
         <label for="vehicle3"> Other</label><br><br>
 		<a>User reputation</a><br>
-        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" checked>
+        <input type="checkbox" id="5star" checked>
         <label for="vehicle3"> ★★★★★</label><br>
-	    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" checked>
+	    <input type="checkbox" id="4star" checked>
         <label for="vehicle1"> ★★★★☆</label><br>
-        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" checked>
+        <input type="checkbox" id="3star" checked>
         <label for="vehicle2"> ★★★☆☆</label><br>
-        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" checked>
+        <input type="checkbox" id="2star">
         <label for="vehicle3"> ★★☆☆☆</label><br>
-		<input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" checked>
+		<input type="checkbox" id="1star" >
         <label for="vehicle3"> ★☆☆☆☆</label><br><br>
     </form>
 	<p id="demo"></p>
@@ -57,10 +57,14 @@
   <div class="searchbar">
     <form id="form"> 
       <input type="search" id="query" name="q" placeholder="Search keyword...">
-      <button onclick="generateSearchResult()">Search</button>
+      <button onclick="generateResults()">Search</button>
 	</form>
 	<div class="searchresults" id="searchresults"></div><!--This div is where main.js renders the search results -->
+	<div>
+	  <span>End of page</span>
+	</div>
   </div>
+  
   
   
   </div>

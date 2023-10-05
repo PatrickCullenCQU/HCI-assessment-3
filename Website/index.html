@@ -4,6 +4,8 @@
 	<link rel="stylesheet" href="index.css">
   </head>
   <body onload="showListings()">
+
+  
   <div class="navbar">
 	<div class ="cqulogo">
 	  <a href="https://my.cqu.edu.au/today"><img src="./Images/Logo.svg"></a>
@@ -20,17 +22,14 @@
 	  <a href="./index.html">Jesse Pinkman</a>
 	</div>
   </div>
-  
+  <div="wholepage">
   <div class="searchtags">
     <form>
-	  <div class="searchtaglistingtype">
 		<a>Listing type</a><br>
         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" checked>
         <label for="vehicle1"> Looking for item</label><br>
         <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" checked>
         <label for="vehicle2"> Trading item</label><br><br>
-	  </div>
-	  <div class="searchtagsitemtype">
 		<a>Item type</a><br>
         <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" checked>
         <label for="vehicle3"> Books</label><br>
@@ -40,8 +39,6 @@
         <label for="vehicle2"> Clothes</label><br>
         <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" checked>
         <label for="vehicle3"> Other</label><br><br>
-	  </div>
-	  <div class="searchtagsrating">
 		<a>User reputation</a><br>
         <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" checked>
         <label for="vehicle3"> ★★★★★</label><br>
@@ -53,54 +50,21 @@
         <label for="vehicle3"> ★★☆☆☆</label><br>
 		<input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" checked>
         <label for="vehicle3"> ★☆☆☆☆</label><br><br>
-	  </div>
     </form>
 	<p id="demo"></p>
-  </div>
-  <div class="searchresults">
-    <img src="./Images/Logo.svg">
+	</div>
+  
+  <div class="searchbar">
+    <form id="form"> 
+      <input type="search" id="query" name="q" placeholder="Search keyword...">
+      <button onclick="generateSearchResult()">Search</button>
+	</form>
+	<div class="searchresults" id="searchresults"></div><!--This div is where main.js renders the search results -->
   </div>
   
-  <script>
-    function Listing(type, firstName, lastName, reputation, title, body, imagePath){
-	  this.type = type;
-	  this.firstName = firstName;
-	  this.lastName = lastName;
-	  this.reputation = reputation;
-	  this.title = title;
-	  this.body = body;
-	  this.imagePath = imagePath;
-	}
-	
-	let listings = [
-	  new Listing("Looking for", "Joe", "Smith", 5, "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "/images/laptop.png"),
-	  new Listing("Trading", "John", "Smith", 5, "I'm looking for my balls", "Please help my find my balls", "path/to/image"),
-	  new Listing("Looking for", "Nutty", "Smith", 5, "I'm looking for my balls", "Please help my find my balls", "path/to/image")
-	];
-	
-	addNewListing("Looking for", "Slag", "Smith", 5, "I'm looking for my balls", "Please help my find my balls");
-	 
-	function addNewListing(type, firstName, lastName, reputation, title, body){
-	  listings.push(new Listing(type, firstName, lastName, reputation, title, body, "path/to/image"));
-	}
-	console.log(listings);
   
-    function showListings(){
-	  const myObject = {
-		name : "john doe",
-	    age : 32,
-	    gender : "male",
-	    profession : "optician" 
-	  }
-
-	  window.localStorage.setItem("listings", JSON.stringify(listings[2]));
-	  console.log(localStorage);
-	  
-	  //let newObject = window.localStorage.getItem("myObject");
-	  //console.log(JSON.parse(newObject));
-	}
-
-  </script>
+  </div>
+  <script src="main.js"></script>
   
   </body>
 </html>

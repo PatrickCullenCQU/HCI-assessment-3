@@ -1,3 +1,8 @@
+*{
+	font-family: 'Courier New';
+}
+
+
 /* Nav bar */
 .navbar{
   display: grid;
@@ -35,3 +40,25 @@
   line-height: 50px;
   text-align: right;
 }
+
+
+.searchtags {
+	margin-left: 50px;
+	float:left;
+}
+
+.searchbar {
+	position: absolute;
+	margin-left: 300px;
+	margin-top: 25px;
+	float:right;
+}
+.searchbar input{
+	position: relative;
+	width: 50%;
+}
+
+.searchbar button {
+	position: relative;
+}
+

@@ -9,6 +9,7 @@ function Listing(type, firstName, lastName, reputation, item, title, body, image
 	  this.imagePath = imagePath;
 	}
 	
+// Hard coded listings
 let listings = [
   new Listing("Looking for", "Joe", "Smith", 5, "Electronic devices", "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "Images\\laptop.png"),
   new Listing("Trading", "John", "Smith", 4, "Other", "I'm looking for my balls", "Please help my find my balls", "path/to/image"),
@@ -65,22 +66,34 @@ function updateCheckedReputation(){
 	}
 }
 
+let checkedType = [];
+updateCheckedType();
+console.log(checkedType);
 
-    
-  window.localStorage.setItem("listings", JSON.stringify(listings[2]));
+function updateCheckedType(){
+	if(document.getElementById('lookingforitem').checked){
+		checkedType.push('Looking for');
+	}
+	if(document.getElementById('tradingitem').checked){
+		checkedType.push('Trading');
+	}
+}
+
+
   console.log(localStorage);
   
   //let newObject = window.localStorage.getItem("myObject");
   //console.log(JSON.parse(newObject));
 
-
+loadCheckBoxes();
 generateResults();
 	// Loop renders listings from array
 function generateResults(){
+	loadCheckBoxes();
 	updateCheckedItems();
 	updateCheckedReputation();
+	updateCheckedType();
 	
-	alert("Cunt");
 	for(let i = 0; i < listings.length; i++) {
 		let count = 0;
 		/*if(i >= 4) {
@@ -102,16 +115,24 @@ function generateResults(){
 			}
 		}
 		
-		if(count == 2) {
-			generateSearchResult(i, listings[i].imagePath, listings[i].title, listings[i].body, listings[i].reputation);
+		//Check selected trade type tags
+		for(let k = 0; k < checkedType.length; k++) {
+			if(checkedType[k]==listings[i].type){
+				count += 1;
+				break;
+			}
+		}
+		
+		if(count == 3) {
+			generateSearchResult(i, listings[i].imagePath, listings[i].title, listings[i].body, listings[i].reputation, listings[i].type);
 		}
 		
 	}
 }	
 
 
-
-function generateSearchResult(id, imagePath, titleString, descriptionString, reputationString){
+// Renders a single search result
+function generateSearchResult(id, imagePath, titleString, descriptionString, reputationString, tradeString){
 	switch(reputationString) {
 		case 1:
 			reputationString = '★☆☆☆☆';
@@ -132,27 +153,120 @@ function generateSearchResult(id, imagePath, titleString, descriptionString, rep
 
 	//Create div
 	resultarea = document.createElement('div');
-	resultarea.setAttribute('style',"border-radius: 10px; width: 750px; height: 300px; border: 2px solid rgba(200, 200, 200, 1); margin-top: 15px; margin-bottom: 15px;")
+	resultarea.setAttribute('style',"border-radius: 10px; width: 750px; height: 250px; border: 2px solid rgba(200, 200, 200, 1); margin-top: 15px; margin-bottom: 15px;")
 	resultarea.setAttribute('id', id)
 	document.getElementById('searchresults').append(resultarea);
 	
 	// Creates image element
 	imageElement = document.createElement('img');
 	imageElement.setAttribute('src', imagePath);
-	imageElement.setAttribute('style',"border-radius: 10px; position: absolute; width: 200px; height: 200px;");
+	imageElement.setAttribute('style',"border-radius: 10px; position: absolute; margin-top: 25px; width: 250px; height: 225px;");
 	document.getElementById(id).append(imageElement);
+	
+	// Ctreates trade type
+	tradeType = document.createElement('span');
+	tradeType.setAttribute('style', "background-color: lime; position: absolute; border-radius: 10px;");
+	tradeType.textContent = tradeString + ':';
+	document.getElementById(id).append(tradeType);
 
 	// Creates title
 	title = document.createElement('b');
-	title.setAttribute('style',"margin-left: 250px;");
+	title.setAttribute('style',"margin-left: 150px; Width: 300px");
 	title.textContent = titleString + reputationString;
 	document.getElementById(id).append(title);
 	
 	// Creates description
 	description = document.createElement('p');
-	description.setAttribute('style',"margin-left: 250px;");
+	description.setAttribute('style',"margin-left: 275px; width: 300px");
 	description.textContent = descriptionString;
 	document.getElementById(id).append(description);
+	
+	/*//Creates listing author div
+	authorArea = document.createElement('div');
+	authorArea.setAttribute('style',"display:block; border-radius: 10px; width: 750px; height: 250px; border: 2px solid rgba(200, 200, 200, 1); background-color: red; margin-left: 200px; margin-top: 100px;")
+	document.getElementById(id).append(authorArea);*/
 }
 
+// Saves and loads checkbox states
+function saveCheckBoxes(){
+	var checkbox = document.getElementById('lookingforitem');
+    localStorage.setItem('lookingforitem', checkbox.checked);
+	var checkbox = document.getElementById('tradingitem');
+    localStorage.setItem('tradingitem', checkbox.checked);
 
+	
+	var checkbox = document.getElementById('books');
+    localStorage.setItem('books', checkbox.checked);
+	var checkbox = document.getElementById('devices');
+    localStorage.setItem('devices', checkbox.checked);
+	var checkbox = document.getElementById('clothes');
+    localStorage.setItem('clothes', checkbox.checked);
+	var checkbox = document.getElementById('other');
+    localStorage.setItem('other', checkbox.checked);
+	
+	var checkbox = document.getElementById('5star');
+    localStorage.setItem('5star', checkbox.checked);
+	var checkbox = document.getElementById('4star');
+    localStorage.setItem('4star', checkbox.checked);
+	var checkbox = document.getElementById('3star');
+    localStorage.setItem('3star', checkbox.checked);
+	var checkbox = document.getElementById('2star');
+    localStorage.setItem('2star', checkbox.checked);
+	var checkbox = document.getElementById('1star');
+    localStorage.setItem('1star', checkbox.checked);
+}
+
+function loadCheckBoxes(){
+	var checked = JSON.parse(localStorage.getItem('lookingforitem'));
+	document.getElementById('lookingforitem').checked = checked;
+	var checked = JSON.parse(localStorage.getItem('tradingitem'));
+	document.getElementById('tradingitem').checked = checked;
+	
+	var checked = JSON.parse(localStorage.getItem('books'));
+	document.getElementById('books').checked = checked;
+	var checked = JSON.parse(localStorage.getItem('devices'));
+	document.getElementById('devices').checked = checked;
+	var checked = JSON.parse(localStorage.getItem('clothes'));
+	document.getElementById('clothes').checked = checked;
+	var checked = JSON.parse(localStorage.getItem('other'));
+	document.getElementById('other').checked = checked;
+	
+	var checked = JSON.parse(localStorage.getItem('5star'));
+	document.getElementById('5star').checked = checked;
+	var checked = JSON.parse(localStorage.getItem('4star'));
+	document.getElementById('4star').checked = checked;
+	var checked = JSON.parse(localStorage.getItem('3star'));
+	document.getElementById('3star').checked = checked;
+	var checked = JSON.parse(localStorage.getItem('2star'));
+	document.getElementById('2star').checked = checked;
+	var checked = JSON.parse(localStorage.getItem('1star'));
+	document.getElementById('1star').checked = checked;
+	
+	// Automatically sets all checks all checkboxes if no checkbox data is found in local storage
+	if(localStorage.getItem("books") === null) {
+		var checked = JSON.parse(localStorage.getItem('lookingforitem'));
+		document.getElementById('lookingforitem').checked = true;
+		var checked = JSON.parse(localStorage.getItem('tradingitem'));
+		document.getElementById('tradingitem').checked = true;
+		
+		var checked = JSON.parse(localStorage.getItem('books'));
+		document.getElementById('books').checked = true;
+		var checked = JSON.parse(localStorage.getItem('devices'));
+		document.getElementById('devices').checked = true;
+		var checked = JSON.parse(localStorage.getItem('clothes'));
+		document.getElementById('clothes').checked = true;
+		var checked = JSON.parse(localStorage.getItem('other'));
+		document.getElementById('other').checked = true;
+		
+		var checked = JSON.parse(localStorage.getItem('5star'));
+		document.getElementById('5star').checked = true;
+		var checked = JSON.parse(localStorage.getItem('4star'));
+		document.getElementById('4star').checked = true;
+		var checked = JSON.parse(localStorage.getItem('3star'));
+		document.getElementById('3star').checked = true;
+		var checked = JSON.parse(localStorage.getItem('2star'));
+		document.getElementById('2star').checked = true;
+		var checked = JSON.parse(localStorage.getItem('1star'));
+		document.getElementById('1star').checked = true;
+	}
+}

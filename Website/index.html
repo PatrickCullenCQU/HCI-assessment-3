@@ -19,36 +19,36 @@
 	</div>
 	<div class="profile">
 	  <!--a href="https://my.cqu.edu.au/today"><img src="./Images/Logo.svg"></a-->
-	  <a href="./index.html">Jesse Pinkman</a>
+	  <span>Test User</span>
 	</div>
   </div>
   <div="wholepage">
   <div class="searchtags">
     <form>
 		<a>Listing type</a><br>
-        <input type="checkbox" id="lookingforitem" name="vehicle1" value="Bike" checked>
+        <input type="checkbox" id="lookingforitem" onchange="saveCheckBoxes()">
         <label for="vehicle1"> Looking for item</label><br>
-        <input type="checkbox" id="tradingitem" name="vehicle2" value="Car" checked>
+        <input type="checkbox" id="tradingitem" onchange="saveCheckBoxes()">
         <label for="vehicle2"> Trading item</label><br><br>
 		<a>Item type</a><br>
-        <input type="checkbox" id="books" checked>
+        <input type="checkbox" id="books" onchange="saveCheckBoxes()">
         <label for="vehicle3"> Books</label><br>
-	    <input type="checkbox" id="devices" checked>
+	    <input type="checkbox" id="devices" onchange="saveCheckBoxes()">
         <label for="vehicle1"> Electronic devices</label><br>
-        <input type="checkbox" id="clothes" checked>
+        <input type="checkbox" id="clothes" onchange="saveCheckBoxes()">
         <label for="vehicle2"> Clothes</label><br>
-        <input type="checkbox" id="other" checked>
+        <input type="checkbox" id="other" onchange="saveCheckBoxes()">
         <label for="vehicle3"> Other</label><br><br>
 		<a>User reputation</a><br>
-        <input type="checkbox" id="5star" checked>
+        <input type="checkbox" id="5star" onchange="saveCheckBoxes()">
         <label for="vehicle3"> ★★★★★</label><br>
-	    <input type="checkbox" id="4star" checked>
+	    <input type="checkbox" id="4star" onchange="saveCheckBoxes()">
         <label for="vehicle1"> ★★★★☆</label><br>
-        <input type="checkbox" id="3star" checked>
+        <input type="checkbox" id="3star" onchange="saveCheckBoxes()">
         <label for="vehicle2"> ★★★☆☆</label><br>
-        <input type="checkbox" id="2star">
+        <input type="checkbox" id="2star" onchange="saveCheckBoxes()">
         <label for="vehicle3"> ★★☆☆☆</label><br>
-		<input type="checkbox" id="1star" >
+		<input type="checkbox" id="1star" onchange="saveCheckBoxes()">
         <label for="vehicle3"> ★☆☆☆☆</label><br><br>
     </form>
 	<p id="demo"></p>
@@ -61,7 +61,7 @@
 	</form>
 	<div class="searchresults" id="searchresults"></div><!--This div is where main.js renders the search results -->
 	<div>
-	  <span>End of page</span>
+	  <span>End of results</span>
 	</div>
   </div>
   

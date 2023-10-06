@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: auto auto auto;
   background-color: rgba(122, 122, 122, 1);
-  padding: 5px;
+  padding: 0px;
   column-gap: 50px;
 }
 
@@ -26,9 +26,6 @@
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   background-color: lightblue;
-	
-  /*position:relative;
-  bottom: -15px;*/
   font-size: 20px;
   line-height: 50px;
   text-align: center;
@@ -43,8 +40,14 @@
 
 
 .searchtags {
-	margin-left: 50px;
+	margin-top: 15px;
+	margin-left: 40px;
 	float:left;
+	border: 2px solid rgba(200, 200, 200, 1);
+	width: 220px;
+	border-radius: 10px;
+	padding: 5px;
+	
 }
 
 .searchbar {

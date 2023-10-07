@@ -14,7 +14,7 @@
 }
 
 .listitem {
-	color: lime;
+	color: #C1D600FF;
 	font-weight: bold;
 }
 
@@ -78,6 +78,11 @@
 
 .imageupload {
 	margin-bottom: 25px;
+	
 }
 
 
+.publishbutton {
+	background-color: #C1D600FF;
+	border-radius: 5px;
+}

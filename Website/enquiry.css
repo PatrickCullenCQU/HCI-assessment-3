@@ -14,7 +14,7 @@
 }
 
 .shop {
-	color: lime;
+	color: #C1D600FF;
 	font-weight: bold;
 }
 
@@ -54,6 +54,8 @@
 
 .gobackbutton {
 	position: absolute;
+	background-color: #C1D600FF;
+	border-radius: 5px;
 }
 
 .gridcontainer {

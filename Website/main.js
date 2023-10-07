@@ -1,8 +1,3 @@
-function setupFunctions(){
-	
-	generateResults();
-}
-
 function contact(){
 	alert("There is no contact page yet. It should probably redirect to the CQU website's contact page");
 }
@@ -33,7 +28,6 @@ const listings = [
 function addNewListing(type, firstName, lastName, reputation, title, body, item){
   listings.push(new Listing(type, firstName, lastName, reputation, item,title, body, "path/to/image"));
 }
-console.log(listings);
 
 let checkedItems = [];
 
@@ -86,16 +80,13 @@ function updateCheckedType(){
 	console.log(checkedType);
 }
 
+// Saves search query to localStorage
 function saveQuery(){
 	let queryString = (document.getElementById('query').value).toUpperCase();
 	localStorage.setItem("searchString", queryString);
 }
 
-
-  
- 
-
-	// Loop renders listings from array
+// Loop renders listings from array, checking each listing against checked tags and search query
 function generateResults(){
 	loadCheckBoxes();
 	updateCheckedItems();
@@ -137,28 +128,27 @@ function generateResults(){
 		}
 		
 		//Check if listings match search
-		
-		/*if(searchString === 0){
+		if(searchString == ''){
 			count += 1;
 		}
-		else{*/
+		else{
 			for(let k = 0; k < checkedType.length; k++) {
-				let combinedString = (listings[i].firstName+listings[i].lastName+listings[i].item+listings[i].title+listings[i].body).toUpperCase();
+				let combinedString = (listings[i].firstName+listings[i].lastName+listings[i].item+listings[i].title+listings[i].body+listings[i].type).toUpperCase();
 				
 				if(combinedString.includes(searchString)){
 				count +=1;
 				break;
 				}
 			}
-		//}
+		}
 		
+		// Generates a search result if the listing meets all requirements
 		if(count == 4) {
-			generateSearchResult(i, listings[i].imagePath, listings[i].title, listings[i].body, listings[i].reputation, listings[i].type, listings[i].firstName, listings[i]. lastName);
+			generateSearchResult(i, listings[i].imagePath, listings[i].title, listings[i].body, listings[i].reputation, listings[i].type, listings[i].firstName, listings[i].lastName);
 		}
 		
 	}
-}	
-console.log(localStorage);
+}
 
 // Renders a single search result
 function generateSearchResult(id, imagePath, titleString, descriptionString, reputationString, tradeString, fNameString, lNameString){
@@ -203,7 +193,7 @@ function generateSearchResult(id, imagePath, titleString, descriptionString, rep
 	
 	// Creates trade type
 	tradeType = document.createElement('span');
-	tradeType.setAttribute('style', "background-color: lime; position: absolute; border-radius: 5px;");
+	tradeType.setAttribute('style', "background-color: #C1D600FF; position: absolute; border-radius: 5px;");
 	tradeType.textContent = tradeString + ':';
 	document.getElementById(id).append(tradeType);
 

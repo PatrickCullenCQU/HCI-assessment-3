@@ -18,7 +18,7 @@
 }
 
 .shop {
-	color: lime;
+	color: #C1D600FF;
 	font-weight: bold;
 }
 
@@ -71,11 +71,13 @@
 }
 .searchbar input{
 	position: relative;
-	width: 50%;
+	width: 300px;
 }
 
 .searchbar button {
 	position: relative;
+	background-color: #C1D600FF;
+	border-radius: 5px;
 }
 
 .searchresults {

@@ -22,7 +22,7 @@ function displayEnquiry(){
 	/// Display left side
 	//Display type
 	type = document.createElement('b');
-	type.setAttribute('style', ' text-align: left; width: 300px; background-color: lime; border-radius: 10px;');
+	type.setAttribute('style', ' text-align: left; width: 300px; background-color: #C1D600FF; border-radius: 5px;');
 	type.textContent = listings[id].type;
 	document.getElementById('leftbox').append(type);
 	

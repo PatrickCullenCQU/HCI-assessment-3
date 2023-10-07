@@ -4,26 +4,25 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="index.css">
   </head>
-  <body onload="setupFunctions()">
-
+  <body onload="generateResults()">
+	<div class="navbar">
+	  <div class ="cqulogo">
+	    <a href="https://my.cqu.edu.au/today"><img src="./Images/Logo.svg"></a>
+	  </div>
+      <div class="navlinks">
+	    <a></a>
+	    <a class="shop" href="./index.html" style="text-decoration:none">Shop</a>
+	    <a href="./newlisting.html" style="text-decoration:none">List Item</a>
+	    <a href="" onclick="contact()" style="text-decoration:none">Contact</a>
+	    <a></a>
+	  </div>
+	  <div class="profile">
+	    <img class="profilepic" src="./Images/profile.png">
+	    <span class="username">Test User</span>	  
+	  </div>
+    </div>
   
-  <div class="navbar">
-	<div class ="cqulogo">
-	  <a href="https://my.cqu.edu.au/today"><img src="./Images/Logo.svg"></a>
-	</div>
-    <div class="navlinks">
-	  <a></a>
-	  <a class="shop" href="./index.html" style="text-decoration:none">Shop</a>
-	  <a href="./newlisting.html" style="text-decoration:none">List Item</a>
-	  <a href="./index.html" style="text-decoration:none">Contact</a>
-	  <a></a>
-	</div>
-	<div class="profile">
-	  <!--a href="https://my.cqu.edu.au/today"><img src="./Images/Logo.svg"></a-->
-	  <span>Test User</span>
-	</div>
-  </div>
-  <div class="wholepage">
+   <div class="wholepage">
   <div class="searchtags">
     <form>
 		<a>Listing type</a><br>
@@ -58,7 +57,7 @@
   <div class="searchbar">
     <form id="form"> 
       <input type="search" id="query" name="q" placeholder="Search keyword...">
-      <button onclick="generateResults()">Search</button>
+      <button onclick="saveQuery();generateResults()">Search</button>
 	</form>
 	<div class="searchresults" id="searchresults"></div><!--This div is where main.js renders the search results -->
 	<div>

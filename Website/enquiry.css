@@ -2,6 +2,56 @@
 	font-family: 'Courier New';
 }
 
+/* Nav bar */
+.navbar{
+  position:fixed;
+  z-index: 1000;
+  top: 0px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: white;
+}
+
+.shop {
+	color: lime;
+	font-weight: bold;
+}
+
+
+.cqulogo {
+  margin-left: 40px;
+}
+
+.navlinks {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+	}
+
+.profile {
+  line-height: 50px;
+  text-align: right;
+  margin-right: 40px;
+}
+
+.username {
+	margin-right: 70px;
+}
+
+.profilepic {
+	position: absolute;
+	width: 30px;
+	margin-left: 100px;
+	margin-top: 10px;
+}
+
+.wholepage {
+	margin-top: 75px;
+}
+
 .gobackbutton {
 	position: absolute;
 }

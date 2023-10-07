@@ -13,11 +13,12 @@
 	  <a></a>
 	  <a class="shop" href="./index.html" style="text-decoration:none">Shop</a>
 	  <a class ="listitem" href="./index.html" style="text-decoration:none">List Item</a>
-	  <a href="./index.html" style="text-decoration:none">Contact</a>
+	  <a href="" onclick="contact()" style="text-decoration:none">Contact</a>
 	  <a></a>
 	</div>
 	<div class="profile">
-	  <span>Test User</span>
+	  <img class="profilepic" src="./Images/profile.png">
+	  <span class="username">Test User</span>	  
 	</div>
   </div>
   <div class="page">
@@ -33,7 +34,7 @@
     <div class="gridcontainer">
       <div class="titlefield">
 	    <label for="fname"><b>Trade title</b><br></label>
-          <input type="text" id="fname" name="fname"><br><br>
+          <input type="text" id="fname" name="fname" placeholder="Title..."><br><br>
 	  </div>
 	  <div class="selectcategory">
 	    <label for="cars"><b>Category<b><br></label>
@@ -49,12 +50,12 @@
 	<div class="imageupload">
 	  <p><b>Image of what you are trading (image upload doesn't work)</b></p>
 	  <img src="Images\\placeholder.png"><br>
-	  <button type="button">Upload image</button><br>
+	  <button type="button" onclick="imageUpload()">Upload image</button><br>
 	  </div>
 	<div class="descriptionfield">
 	  <label for="freeform"><b>Description</b></label>
 	  <br>
-	  <textarea id="freeform" name="freeform" rows="4" cols="50">Describe the item you are trading/trading for and explain what items you are willing to trade it for...</textarea>
+	  <textarea id="freeform" name="freeform" rows="4" cols="50" placeholder="Describe the item you are trading/looking for. Also explain what items you are willing to trade for it..."></textarea>
 	</div>
 	<div class="publishcancel">
 	  <button onclick="window.location.href='index.html'">Cancel</button>

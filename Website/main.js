@@ -1,11 +1,11 @@
 function setupFunctions(){
-	updateCheckedType();
-	updateCheckedReputation();
-	updateCheckedItems();
-	loadCheckBoxes();
+	
 	generateResults();
 }
 
+function contact(){
+	alert("There is no contact page yet. It should probably redirect to the CQU website's contact page");
+}
 
 function Listing(type, firstName, lastName, reputation, item, title, body, imagePath){
 	  this.type = type;
@@ -21,11 +21,11 @@ function Listing(type, firstName, lastName, reputation, item, title, body, image
 // Hard coded listings
 const listings = [
   new Listing("Looking for", "Joe", "Smith", 5, "Electronic devices", "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "Images\\laptop.png"),
-  new Listing("Trading", "John", "Smith", 4, "Other", "I'm looking for my balls", "Please help my find my balls", "path/to/image"),
-  new Listing("Looking for", "Nutty", "Smith", 3, "Other", "I'm looking for my balls", "Please help my find my balls", "path/to/image"),
-  new Listing("Looking for", "Joe", "Smith", 5, "Electronic devices", "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "Images\\laptop.png"),
-  new Listing("Looking for", "Slag", "Smith", 1, "Other", "I'm looking for my balls", "Please help my find my balls"),
-  new Listing("Looking for", "Joe", "Smith", 2, "Clothes", "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "Images\\laptop.png"),
+  new Listing("Trading", "Heather", "Langtree", 4, "Other", "Acoustic guitar", "I'm looking to get rid of this guitar but don't want to just throw it out, so if anyone wants to trade some ps4 games or something for it dm me.", "Images\\guitar.png"),
+  new Listing("Looking for", "Logan", "Freud", 4, "Books", "Notebooks with grid paper", "Looking for notebooks with grid paper for my technical drawing unit starting next week. I can give trade some extra pencils or just give you like $10. Dm me if you have any.", "Images\\gridpaper.png"),
+  new Listing("Trading", "Trent", "Banner", 5, "Electronic devices", "Brand new ps4 controller", "I have a spare, brand new ps4 controller that I don't need and will trade it for a used xbox controller. Usb-c is preferred but the old mini-usb controllers are fine too.", "Images\\controller.png"),
+  new Listing("Looking for", "Jesse", "Pinkman", 1, "Other", "Volumetric flask", "Yo I'm looking for a volumetric flask. Need it really badly. Message me as soon as possible", "Images\\flask.jpg"),
+  new Listing("Trading", "Brent", "Morgan", 3, "Clothes", "Size small high vis shirt", "I accidentally ordered the wrong size and they won't take it back so if someone wants it, just message me. Don't want anything for it.", "Images\\shirt.png"),
   new Listing("Looking for", "Joe", "Smith", 5, "Books", "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "Images\\laptop.png")
 ];
 
@@ -86,8 +86,13 @@ function updateCheckedType(){
 	console.log(checkedType);
 }
 
+function saveQuery(){
+	let queryString = (document.getElementById('query').value).toUpperCase();
+	localStorage.setItem("searchString", queryString);
+}
 
-  console.log(localStorage);
+
+  
  
 
 	// Loop renders listings from array
@@ -97,6 +102,14 @@ function generateResults(){
 	updateCheckedReputation();
 	updateCheckedType();
 	
+	let searchString = '';
+	
+	if(localStorage.getItem("books") !== null) {
+	searchString = localStorage.getItem("searchString");
+	//alert("retrieved "+searchString);
+	}
+	
+	// Checks if listing matches selected item categories
 	for(let i = 0; i < listings.length; i++) {
 		let count = 0;
 		
@@ -107,7 +120,7 @@ function generateResults(){
 			}
 		}
 		
-		//Check selected reputation tags
+		//Checks if listing matches selected user reputations
 		for(let k = 0; k < checkedReputation.length; k++) {
 			if(checkedReputation[k]==listings[i].reputation){
 				count += 1;
@@ -115,7 +128,7 @@ function generateResults(){
 			}
 		}
 		
-		//Check selected trade type tags
+		// Checks if listing matches selected trade types
 		for(let k = 0; k < checkedType.length; k++) {
 			if(checkedType[k]==listings[i].type){
 				count += 1;
@@ -123,13 +136,29 @@ function generateResults(){
 			}
 		}
 		
-		if(count == 3) {
-			generateSearchResult(i, listings[i].imagePath, listings[i].title, listings[i].body, listings[i].reputation, listings[i].type, listings[i]. firstName, listings[i]. lastName);
+		//Check if listings match search
+		
+		/*if(searchString === 0){
+			count += 1;
+		}
+		else{*/
+			for(let k = 0; k < checkedType.length; k++) {
+				let combinedString = (listings[i].firstName+listings[i].lastName+listings[i].item+listings[i].title+listings[i].body).toUpperCase();
+				
+				if(combinedString.includes(searchString)){
+				count +=1;
+				break;
+				}
+			}
+		//}
+		
+		if(count == 4) {
+			generateSearchResult(i, listings[i].imagePath, listings[i].title, listings[i].body, listings[i].reputation, listings[i].type, listings[i].firstName, listings[i]. lastName);
 		}
 		
 	}
 }	
-
+console.log(localStorage);
 
 // Renders a single search result
 function generateSearchResult(id, imagePath, titleString, descriptionString, reputationString, tradeString, fNameString, lNameString){
@@ -181,7 +210,7 @@ function generateSearchResult(id, imagePath, titleString, descriptionString, rep
 	// Creates title
 	title = document.createElement('b');
 	title.setAttribute('style',"margin-left: 150px; Width: 300px");
-	title.textContent = titleString + reputationString;
+	title.textContent = titleString;
 	document.getElementById(id).append(title);
 	
 	// Creates description

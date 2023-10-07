@@ -41,6 +41,16 @@
   margin-right: 40px;
 }
 
+.username {
+	margin-right: 70px;
+}
+
+.profilepic {
+	position: absolute;
+	width: 30px;
+	margin-left: 100px;
+	margin-top: 10px;
+}
 
 .searchtags {
 	margin-top: 15px;

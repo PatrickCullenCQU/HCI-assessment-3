@@ -1,3 +1,12 @@
+function setupFunctions(){
+	updateCheckedType();
+	updateCheckedReputation();
+	updateCheckedItems();
+	loadCheckBoxes();
+	generateResults();
+}
+
+
 function Listing(type, firstName, lastName, reputation, item, title, body, imagePath){
 	  this.type = type;
 	  this.firstName = firstName;
@@ -10,13 +19,13 @@ function Listing(type, firstName, lastName, reputation, item, title, body, image
 	}
 	
 // Hard coded listings
-let listings = [
+const listings = [
   new Listing("Looking for", "Joe", "Smith", 5, "Electronic devices", "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "Images\\laptop.png"),
   new Listing("Trading", "John", "Smith", 4, "Other", "I'm looking for my balls", "Please help my find my balls", "path/to/image"),
   new Listing("Looking for", "Nutty", "Smith", 3, "Other", "I'm looking for my balls", "Please help my find my balls", "path/to/image"),
   new Listing("Looking for", "Joe", "Smith", 5, "Electronic devices", "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "Images\\laptop.png"),
-  new Listing("Looking for", "Slag", "Smith", 5, "Other", "I'm looking for my balls", "Please help my find my balls"),
-  new Listing("Looking for", "Joe", "Smith", 5, "Clothes", "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "Images\\laptop.png"),
+  new Listing("Looking for", "Slag", "Smith", 1, "Other", "I'm looking for my balls", "Please help my find my balls"),
+  new Listing("Looking for", "Joe", "Smith", 2, "Clothes", "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "Images\\laptop.png"),
   new Listing("Looking for", "Joe", "Smith", 5, "Books", "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "Images\\laptop.png")
 ];
 
@@ -27,8 +36,7 @@ function addNewListing(type, firstName, lastName, reputation, title, body, item)
 console.log(listings);
 
 let checkedItems = [];
-updateCheckedItems();
-console.log(checkedItems);
+
 function updateCheckedItems(){
 	if(document.getElementById('books').checked){
 		checkedItems.push('Books');
@@ -42,11 +50,10 @@ function updateCheckedItems(){
 	if(document.getElementById('other').checked){
 		checkedItems.push('Other');
 	}
+	console.log(checkedItems);
 }
 
 let checkedReputation = [];
-updateCheckedReputation();
-console.log(checkedReputation);
 
 function updateCheckedReputation(){
 	if(document.getElementById('5star').checked){
@@ -64,11 +71,10 @@ function updateCheckedReputation(){
 	if(document.getElementById('1star').checked){
 		checkedReputation.push(1);
 	}
+	console.log(checkedReputation);
 }
 
 let checkedType = [];
-updateCheckedType();
-console.log(checkedType);
 
 function updateCheckedType(){
 	if(document.getElementById('lookingforitem').checked){
@@ -77,16 +83,13 @@ function updateCheckedType(){
 	if(document.getElementById('tradingitem').checked){
 		checkedType.push('Trading');
 	}
+	console.log(checkedType);
 }
 
 
   console.log(localStorage);
-  
-  //let newObject = window.localStorage.getItem("myObject");
-  //console.log(JSON.parse(newObject));
+ 
 
-loadCheckBoxes();
-generateResults();
 	// Loop renders listings from array
 function generateResults(){
 	loadCheckBoxes();
@@ -96,10 +99,7 @@ function generateResults(){
 	
 	for(let i = 0; i < listings.length; i++) {
 		let count = 0;
-		/*if(i >= 4) {
-			break;
-		}*/
-		//Check selected item tags
+		
 		for(let k = 0; k < checkedItems.length; k++) {
 			if(checkedItems[k]==listings[i].item){
 				count += 1;
@@ -124,7 +124,7 @@ function generateResults(){
 		}
 		
 		if(count == 3) {
-			generateSearchResult(i, listings[i].imagePath, listings[i].title, listings[i].body, listings[i].reputation, listings[i].type);
+			generateSearchResult(i, listings[i].imagePath, listings[i].title, listings[i].body, listings[i].reputation, listings[i].type, listings[i]. firstName, listings[i]. lastName);
 		}
 		
 	}
@@ -132,7 +132,7 @@ function generateResults(){
 
 
 // Renders a single search result
-function generateSearchResult(id, imagePath, titleString, descriptionString, reputationString, tradeString){
+function generateSearchResult(id, imagePath, titleString, descriptionString, reputationString, tradeString, fNameString, lNameString){
 	switch(reputationString) {
 		case 1:
 			reputationString = '★☆☆☆☆';
@@ -150,12 +150,21 @@ function generateSearchResult(id, imagePath, titleString, descriptionString, rep
 			reputationString = '★★★★★';
 			break;
 	}
-
+	
+	var myId = id;
+	
+	let authorAreaId = 'authorAreaId'+ id;
 	//Create div
 	resultarea = document.createElement('div');
 	resultarea.setAttribute('style',"border-radius: 10px; width: 750px; height: 250px; border: 2px solid rgba(200, 200, 200, 1); margin-top: 15px; margin-bottom: 15px;")
 	resultarea.setAttribute('id', id)
 	document.getElementById('searchresults').append(resultarea);
+	
+	//Creates listing author div
+	authorArea = document.createElement('div');
+	authorArea.setAttribute('id', authorAreaId);
+	authorArea.setAttribute('style',"position:absolute; margin-left: 552px; border-radius: 10px; width: 200px; height: 250px; background-color: rgba(200, 200, 200, 1);")
+	document.getElementById(id).append(authorArea);
 	
 	// Creates image element
 	imageElement = document.createElement('img');
@@ -163,9 +172,9 @@ function generateSearchResult(id, imagePath, titleString, descriptionString, rep
 	imageElement.setAttribute('style',"border-radius: 10px; position: absolute; margin-top: 25px; width: 250px; height: 225px;");
 	document.getElementById(id).append(imageElement);
 	
-	// Ctreates trade type
+	// Creates trade type
 	tradeType = document.createElement('span');
-	tradeType.setAttribute('style', "background-color: lime; position: absolute; border-radius: 10px;");
+	tradeType.setAttribute('style', "background-color: lime; position: absolute; border-radius: 5px;");
 	tradeType.textContent = tradeString + ':';
 	document.getElementById(id).append(tradeType);
 
@@ -177,17 +186,51 @@ function generateSearchResult(id, imagePath, titleString, descriptionString, rep
 	
 	// Creates description
 	description = document.createElement('p');
-	description.setAttribute('style',"margin-left: 275px; width: 300px");
+	description.setAttribute('style',"margin-left: 275px; width: 250px");
 	description.textContent = descriptionString;
 	document.getElementById(id).append(description);
 	
-	/*//Creates listing author div
-	authorArea = document.createElement('div');
-	authorArea.setAttribute('style',"display:block; border-radius: 10px; width: 750px; height: 250px; border: 2px solid rgba(200, 200, 200, 1); background-color: red; margin-left: 200px; margin-top: 100px;")
-	document.getElementById(id).append(authorArea);*/
+	// Creates profile picture
+	profilePicture = document.createElement('img');
+	profilePicture.setAttribute('src', 'images\\profile.png');
+	profilePicture.setAttribute('style',"margin-top: 25px; margin-left: 50px; width: 100px;");
+	document.getElementById(authorAreaId).append(profilePicture);
+	
+	// Create author name
+	authorName = document.createElement('p');
+	authorName.setAttribute('style',"text-align: center;");
+	authorName.textContent = fNameString+" "+lNameString;
+	document.getElementById(authorAreaId).append(authorName);
+	
+	// Create author reputation
+	authorReputation = document.createElement('p');
+	authorReputation.setAttribute('style',"text-align: center;");
+	authorReputation.textContent = reputationString;
+	document.getElementById(authorAreaId).append(authorReputation);
+	
+	
+	
+	// Create enquire Button
+	enquireButton = document.createElement('BUTTON');
+	enquireButton.setAttribute('id', 'button'+id);
+	enquireButton.setAttribute('style', "margin: auto; display: block;");
+	enquireButton.setAttribute ('onclick', "saveSelectedEnquiry(this.id), window.location.href='enquiry.html'");
+	enquireButton.textContent = 'Enquire';
+	document.getElementById(authorAreaId).append(enquireButton);
+	
 }
 
-// Saves and loads checkbox states
+function saveSelectedEnquiry(enquiryId){
+	var id = enquiryId.replace(/^\D+/g, '');
+	localStorage.setItem("id", id);
+}
+
+function amogus(){
+	id = localStorage.getItem("id");
+	alert("Enquiry page: "+id);
+
+}
+
 function saveCheckBoxes(){
 	var checkbox = document.getElementById('lookingforitem');
     localStorage.setItem('lookingforitem', checkbox.checked);
@@ -242,7 +285,7 @@ function loadCheckBoxes(){
 	var checked = JSON.parse(localStorage.getItem('1star'));
 	document.getElementById('1star').checked = checked;
 	
-	// Automatically sets all checks all checkboxes if no checkbox data is found in local storage
+	// Automatically checks all checkboxes if no checkbox data is found in local storage
 	if(localStorage.getItem("books") === null) {
 		var checked = JSON.parse(localStorage.getItem('lookingforitem'));
 		document.getElementById('lookingforitem').checked = true;

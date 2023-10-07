@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+  <head>
+    <title>New Listing</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="newlisting.css">
+  </head>
+  <body>
+  <div class="navbar">
+	<div class ="cqulogo">
+	  <a href="https://my.cqu.edu.au/today"><img src="./Images/Logo.svg"></a>
+	</div>
+    <div class="navlinks">
+	  <a></a>
+	  <a class="shop" href="./index.html" style="text-decoration:none">Shop</a>
+	  <a class ="listitem" href="./index.html" style="text-decoration:none">List Item</a>
+	  <a href="./index.html" style="text-decoration:none">Contact</a>
+	  <a></a>
+	</div>
+	<div class="profile">
+	  <span>Test User</span>
+	</div>
+  </div>
+  <div class="page">
+    <div class="selecttradetype">
+	    <label for="cars"><b>Trade type<b><br></label>
+		  <select name="cars" id="cars">
+		    <option value="select">--Select trade type--</option>
+		    <option value="books">Looking for:</option>
+		    <option value="devices">Trading:	</option>
+		  </select>
+  	  </div>
+  
+    <div class="gridcontainer">
+      <div class="titlefield">
+	    <label for="fname"><b>Trade title</b><br></label>
+          <input type="text" id="fname" name="fname"><br><br>
+	  </div>
+	  <div class="selectcategory">
+	    <label for="cars"><b>Category<b><br></label>
+		  <select name="cars" id="cars">
+		    <option value="select">--Select category--</option>
+		    <option value="books">Books</option>
+		    <option value="devices">Electronic devices/option>
+		    <option value="clothes">Clothes</option>
+		    <option value="other">Other</option>
+		  </select>
+  	  </div>
+	</div>
+	<div class="imageupload">
+	  <p><b>Image of what you are trading (image upload doesn't work)</b></p>
+	  <img src="Images\\placeholder.png"><br>
+	  <button type="button">Upload image</button><br>
+	  </div>
+	<div class="descriptionfield">
+	  <label for="freeform"><b>Description</b></label>
+	  <br>
+	  <textarea id="freeform" name="freeform" rows="4" cols="50">Describe the item you are trading/trading for and explain what items you are willing to trade it for...</textarea>
+	</div>
+	<div class="publishcancel">
+	  <button onclick="window.location.href='index.html'">Cancel</button>
+	  <button onclick="publishAlert()">Publish</button>
+	</div>
+	<script src="newlisting.js"></script>
+  </body>
+ </html>

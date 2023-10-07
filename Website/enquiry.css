@@ -1,0 +1,29 @@
+*{
+	font-family: 'Courier New';
+}
+
+.gobackbutton {
+	position: absolute;
+}
+
+.gridcontainer {
+  margin-top: 25px;
+  display: inline-grid;
+  grid-template-columns: auto auto;
+}
+
+.leftbox {
+  border: 2px solid rgba(200, 200, 200, 1);
+  border-radius: 10px;
+  width: 350px;
+  padding: 15px;
+}
+
+.rightbox {
+  border: 2px solid rgba(200, 200, 200, 1);
+  border-radius: 10px;
+  border-radius: 10px;
+  width: 350px;
+  padding: 15px;
+  line-height: 0.5;
+}

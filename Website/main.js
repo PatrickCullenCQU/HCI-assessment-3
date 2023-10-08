@@ -21,7 +21,7 @@ const listings = [
   new Listing("Trading", "Trent", "Banner", 5, "Electronic devices", "Brand new ps4 controller", "I have a spare, brand new ps4 controller that I don't need and will trade it for a used xbox controller. Usb-c is preferred but the old mini-usb controllers are fine too.", "Images\\controller.png"),
   new Listing("Looking for", "Jesse", "Pinkman", 1, "Other", "Volumetric flask", "Yo I'm looking for a volumetric flask. Need it really badly. Message me as soon as possible", "Images\\flask.jpg"),
   new Listing("Trading", "Brent", "Morgan", 3, "Clothes", "Size small high vis shirt", "I accidentally ordered the wrong size and they won't take it back so if someone wants it, just message me. Don't want anything for it.", "Images\\shirt.png"),
-  new Listing("Looking for", "Joe", "Smith", 5, "Books", "Laptop for Word and Excel", "I'm looking for a laptop capable of running Microsoft Word and Excel. Windows 11 is preferred but Windows 10 isn't a deal breaker.\nI'm willing to trade my road bike for it or transfer money. Message to discuss further", "Images\\laptop.png")
+  new Listing("Looking for", "Liam", "Clarkson", 4, "Electronic devices", "USB keyboard", "The keyboard for my laptop stopped working so I need a USB keyboard. I'm willing to trade a few DVDs I don't want. Otherwise, cash is fine", "Images\\keyboard.jpg")
 ];
 
 // Adds a new listing

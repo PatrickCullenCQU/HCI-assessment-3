@@ -38,7 +38,7 @@ function displayEnquiry(){
 	//Display image
 	listingImage = document.createElement('img');
 	listingImage.setAttribute('src', listings[id].imagePath);
-	listingImage.setAttribute('style', "width: 300px;  display: block; margin-left: auto; margin-right: auto;");
+	listingImage.setAttribute('style', "width: 300px;  display: block; margin-left: auto; margin-right: auto; margin-top: 20px;");
 	document.getElementById('leftbox').append(listingImage);
 	
 	//Display description
